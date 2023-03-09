@@ -1,0 +1,47 @@
+table{
+    text-align: center;
+    color: blueviolet;
+    border-collapse: collapse;
+}
+table td, table th{
+    border: 1px solid;
+    padding: 10px;
+    min-height: 160px;
+}
+td{
+    color: black;
+}
+th{
+    color:rgb(239, 239, 239);
+    background-color: rgb(108, 56, 157);
+    border-color: black;
+}
+thead{
+    border-color: black;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.adjust-update-link{
+    margin-left: 10px;
+}
+.action-list{
+    padding-bottom: 25px;
+    margin-top: 70px;
+}
+
+.action-list-wrapper{
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+table.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabCol{
+   display: none;
+}

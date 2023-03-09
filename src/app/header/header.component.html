@@ -1,0 +1,53 @@
+<!--searchbox-->
+    <!--<div *ngIf="menuType==='default'" class="nav-search">
+        <input type="text" 
+        #searchInput
+        (keyup)="searchProduct($event)"  
+        (blur)="hideSearch()"
+        placeholder="search Product"/> 
+
+        <button (click)="submitSearch(searchInput.value)">Search</button>-->
+        
+        <!--<ul class="suggested-Result"  *ngIf="searchResult">
+            <li *ngFor="let item of searchResult">
+                <a (mousedown)="redirectToDetails(item.id)">{{item.name}}</a>
+            </li>
+        </ul>-->
+<nav class="nav">
+    <div class="hamburger-menu">
+        <input type="checkbox">
+        <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </div>
+    
+    <div [ngSwitch]="menuType" class="menu-items">
+        <!--default Menu-->
+        <ul *ngSwitchCase="'default'">
+            <li><a routerLink="Admin">Admin</a></li>
+            <li><a >Home</a></li>
+            <li><a routerLink="/user-auth">Login/SignUp</a></li>
+
+        </ul>
+        <!--Admin Menu-->
+        <ul *ngSwitchCase="'Admin'">
+            <li><a routerLink="Admin">{{AdminName | titlecase}}(Admin)</a></li>
+            <li><a routerLink="">Product List</a></li>
+            <li><a routerLink="Admin-add-product">Add Product</a></li>
+            <li><a (click)="logout()">Logout</a></li>
+            
+        </ul>
+        <!--User Menu-->
+        <ul *ngSwitchCase="'user'">
+                <li>{{userName | uppercase}}</li>
+                <li><a routerLink="Admin">Admin Login</a></li>
+                <li><a routerLink="user-auth">Home</a></li>
+                <li><a routerLink="Admin-add-product">Add Product</a></li>
+                <li><a routerLink="quick-add">Quick Add Product</a></li>
+                <li><a (click)="userLogout()">Logout</a></li>
+                
+        </ul>
+    </div>
+    </div>
+</nav>

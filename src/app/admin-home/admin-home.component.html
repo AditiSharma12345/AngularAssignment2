@@ -1,0 +1,41 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+<div class="action-list">
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Actions</th>
+                <th colspan="2">Permissions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+                <tr><td>Allow user to delete records?</td>
+                    <td><input type="checkbox" (click)="AllowDelete()" class="btn "> Allow 
+                </td>
+                <td><input type="checkbox" (click)="NotAllowDelete()" class="btn "> Do not allow
+                </td>
+               
+                </tr>
+                <tr><td>Allow user to edit records?</td>
+                    <td><input type="checkbox" (click)="AllowEdit()" class="btn ">Allow
+                    </td> 
+                    <td><input type="checkbox" (click)="NotAllowEdit()" class="btn "> Do not allow
+                    </td>
+                </tr>
+                <tr><td>Allow user to search records?</td>
+                    <td><input type="checkbox" (click)="AllowSearch()" class="btn ">Allow
+                    </td> 
+                    <td><input type="checkbox" (click)="NotAllowSearch()" class="btn "> Do not allow
+                    </td>
+                </tr>
+                <tr><td>Allow user to delete multiple records?</td>
+                    <td><input type="checkbox" ng-Model="multiselect">Allow</td>
+                    <td><input type="checkbox" class="btn "> Do not allow</td>
+
+               </tr>
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,104 @@
+<!--<ngb-carousel *ngIf="popularProducts">
+	<ng-template *ngFor="let item of popularProducts" ngbSlide>
+		<div class="picsum-img-wrapper">
+			<a routerLink="/details/{{item.id}}">
+			<img class = "product-header-image" src="{{item.image}}" alt="Random first slide" />
+		</a>
+		</div>
+		<div class="carousel-caption">
+			<h3>{{item.name}}</h3>
+            <p>{{item.description}}</p>
+		</div>
+	</ng-template>
+</ngb-carousel>
+<div class="product-list-wrapper">
+	<h1>Trendy products</h1>
+	<div class="row">
+		<div class="col-sm-3" *ngFor="let item of trendyProducts">
+			<div class="product-item">
+			<img src="{{item.image}}">
+		
+		<div class="product-details">
+			<h6 class="name-head">New apple mobile</h6>
+		
+		<div class="product-price">
+			<h6>{{item.price}}</h6>
+		</div>
+		<div class="product-color">
+			<h6>{{item.color}}</h6>
+		</div>
+	</div>
+	<div class="product-footer">
+		<a routerLink="/details/{{item.id}}">view Details</a>
+		<a href="">Add to cart</a>
+	</div>
+</div>
+</div>
+</div>
+</div> -->
+
+<!--<nav class="nav">
+    <div *ngIf="menuType==='default'" class="nav-search">
+        <input type="text"
+        #searchInput
+        (keyup)="searchProduct($event)"  (blur)="hideSearch()" placeholder="search Product"/>
+        <button (click)="submitSearch(searchInput.value)">Search</button>
+        <ul class="suggested-Result"  *ngIf="searchResult">
+            <li *ngFor="let item of searchResult">
+                <a (mousedown)="redirectToDetails(item.id)">{{item.name}}</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+<nav class="nav">
+    <div class="nav-search" *ngIf="temp==='true'">
+       <input 
+       type="text" 
+       placeholder="Search Product" 
+       [(ngModel)]="searchtext">
+    </div>
+</nav>
+
+<div class="product-list">
+    <p id="message-p">{{productMessage}}</p>
+    <h1>Products List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Name</th>
+                <th>Heading</th>
+                <th>SubHeading</th>
+                <th>Stock</th>
+				<th>Tags</th>
+                <th>Expiry</th>
+				<th>Description</th>
+                <th *ngIf="answer==='true'">Delete</th>
+                <th *ngIf="ans==='true'">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of (productList  | searchText: searchtext | sort)">
+				<td><a class="anchor" (click)="redirectToDetails(item.id)">{{item.name}}</a></td>
+                <td>{{item.heading}}</td>
+                <td>{{item.subHeading}}</td>
+                <td>{{item.stock}}</td>
+                <td>{{item.tags}}</td>
+				<td>{{item.expiry}}</td>
+                <td>{{item.description}}</td>
+                
+                    <td *ngIf="answer==='true'">
+                        <fa-icon [icon]="icon" (click)="deleteProduct(item.id)"></fa-icon> 
+                    </td>
+                
+                <td *ngIf="ans==='true'">
+                    <a class="adjust-update-link" routerLink="/Admin-update-product/{{item.id}}"><fa-icon [icon]="editIcon"></fa-icon></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+

@@ -1,0 +1,126 @@
+{
+  "admin": [
+    {
+      "name": "Aditi Sharma",
+      "email": "Aditi@gmail.com",
+      "password": "abc@123",
+      "id": 1
+    },
+    {
+      "name": "",
+      "password": "",
+      "email": "",
+      "id": 2
+    },
+    {
+      "name": "shivam Sharma",
+      "email": "shivam@gmail.com",
+      "password": "xyz",
+      "id": 3
+    },
+    {
+      "name": "Mohit",
+      "password": "mohit",
+      "email": "Mohit@gmail.com",
+      "id": 4
+    },
+    {
+      "name": "adi sharma",
+      "password": "123",
+      "email": "adi@gmail.com",
+      "id": 5
+    },
+    {
+      "name": "adi sharma",
+      "password": "123",
+      "email": "adi@gmail.com",
+      "id": 6
+    },
+    {
+      "name": "jim",
+      "password": "abcd",
+      "email": "jim@gmail.com",
+      "id": 7
+    }
+  ],
+  "products": [
+    {
+      "name": "Cheetos Cheez Puffs",
+      "heading": "Snacks",
+      "subHeading": "Crunchy, Made With Best Quality Ingredients, 28 g Pouch",
+      "stock": "25",
+      "tags": "snacks,namkeen,cheetos,puffs,savoury snacks,crunchy",
+      "expiry": "Nov-2023",
+      "description": "Enjoy the deliciously cheesy snacks, dialing up mischievous fun amongst tweens. Cheetos is positioned as a brand that inspires imagination and a sense of adventure and fun. It is made using the best quality of raw materials, spices and flavors. You can have this anytime you want and also share it with your loved ones.",
+      "id": 7
+    },
+    {
+      "name": "Daawat Basmati Rice",
+      "heading": "Basmati Rice",
+      "subHeading": "Daawat Basmati Rice/Basmati Akki - Rozana Gold, 5 kg Pouch",
+      "stock": 80,
+      "expiry": "Dec-2023",
+      "tags": "Rice,Basmati,Daawat",
+      "description": "Daawat Rozana Gold is the finest Basmati Rice in the mid-price affordable segment. Rozana Gold has 3/4th length of the basmati grains It is specially processed for daily cooking across a multitude of regular dishes, a perfect fit for every day consumption. It promises a sweet taste and rich aroma as each grain is naturally aged.",
+      "id": 8
+    },
+    {
+      "name": "Saffola Total Refined Cooking oil",
+      "heading": "Cooking Oil",
+      "subHeading": "Saffola Total Refined Cooking oil | Blended Rice Bran & Safflower oil | Helps Manage Cholesterol, 5 L Jar",
+      "stock": 60,
+      "expiry": "Jun-2023",
+      "tags": "oil,refined cooking oil,edible oil and ghee,blended oil",
+      "description": "When your family's heart health is your priority, we know that you go the extra mile to make them follow a heart-healthy lifestyle, to keep them away from heart related signs like cholesterol. Making the right choices can go a long way in taking care of heart health & an important choice is the oil you use. The right cooking oil can work hard and give you the right benefits.Saffola Total blended edible oil is clinically tested^ to take care of your heart in not just 1 but 8 ways. It helps manage your cholesterol*. Saffola Total blended edible vegetable oil also has the power of anti-oxidants that help fight free radicals.",
+      "id": 9
+    },
+    {
+      "name": "Aashirvaad Atta",
+      "heading": "Flour",
+      "subHeading": "Aashirvaad Atta/Godihittu - Whole Wheat, 10 kg",
+      "stock": 40,
+      "expiry": "July-2023",
+      "tags": "FoodGrain,Atta whole wheat,atta , flours, sooji",
+      "description": "Launched on 27th May 2002, Aashirvaad Whole Wheat Atta has now become number one in branded packaged atta across the country. Behind every Aashirvaad pack are the Indian farmers and Aashirvaad experts who’ve made the atta with extra care. Aashirvaad prides itself in making 100% pure whole wheat atta with all its natural dietary fibres intact which ensure that you and your family receive optimum nutrition for a healthy life.",
+      "id": 13
+    }
+  ],
+  "users": [
+    {
+      "name": "goldi",
+      "email": "goldi@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "vinay",
+      "email": "vinay@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "goldi",
+      "email": "goldi@gmail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "vedant",
+      "email": "vedant@gmail.com",
+      "password": "xyz",
+      "id": 4
+    },
+    {
+      "name": "goldi",
+      "email": "goldi@gmail.com",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "name": "goldi",
+      "email": "goldi@gmail.com",
+      "password": "123456",
+      "id": 6
+    }
+  ]
+}
