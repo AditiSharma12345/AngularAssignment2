@@ -1,0 +1,23 @@
+h1{
+    margin-bottom: 30px;
+    margin-top: 40px;
+    color:rgb(53, 34, 77);
+    font-family:cursive;
+    text-align: center;
+}
+h2{
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color:rgb(53, 34, 77);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font: bold;
+}
+h3{
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color:rgb(53, 34, 77);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    text: bold;
+}
