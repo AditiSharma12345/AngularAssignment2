@@ -1,0 +1,18 @@
+<div class="add-product">
+    <h1>Quick Add new product</h1>
+    <p class="message-p">{{productMsg}}</p>
+    <form #addProduct="ngForm" class="common-form" (ngSubmit)="submit(addProduct.value)">
+        <input type="text" class="form-input" placeholder="Enter product name" name="name" #name="ngModel" ngModel required>
+        <p class="invalid-input"><span *ngIf="name.invalid && name.touched">This field is required</span></p>
+
+        <input type="number" class="form-input" placeholder="Enter product stock" name="stock" #stock="ngModel" ngModel required>
+        <p class="invalid-input"><span *ngIf="stock.invalid && stock.touched">This field is required</span></p>
+
+        <input type="text" onfocus="(this.type='date')" class="form-input" placeholder="Enter product expiry" name="expiry" #expiry="ngModel" ngModel required date>
+        <p class="invalid-input"><span *ngIf="expiry.invalid && expiry.touched">This field is required</span></p>
+
+        <button class="form-button" [disabled]="addProduct.invalid">Add Product</button>
+    </form>
+    <button class="form-button1" (click)="cancel()">Cancel</button>
+
+</div>
