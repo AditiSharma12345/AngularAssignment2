@@ -5,21 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CustomPipe implements PipeTransform {
 
-  transform(value: any, ...args: any): any {
-    
+  transform(value: any, q?: any) {
+
     if(!value)
     {
       return null;
     }
-    if(!args)
+    if(!q)
     {
       return value;
     }
-    args=args.toLowerCase();
-    return value.filter(function(data:any){
-      return JSON.stringify(data).toLowerCase().includes(args);
-
+    q=q.toLowerCase();
+    return value.filter(function(item:any){
+      return (JSON.stringify(item.name).toLowerCase().includes(q) || JSON.stringify(item.heading).toLowerCase().includes(q) || 
+      JSON.stringify(item.subHeading).toLowerCase().includes(q));
     })
   }
-
 }
+
+
+
