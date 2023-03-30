@@ -27,15 +27,7 @@ export class AdminService {
       }
     })
   }
-  AdminReload()
-  {
-    if(localStorage.getItem('Admin'))
-    {
-      this.isAdminLoggedIn.next(true);
-      this.router.navigate(['Admin-home']);
-    }
-  }
-
+ 
   AdminLogin(data: login)
   {
      console.warn(data);
