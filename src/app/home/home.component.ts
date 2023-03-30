@@ -1,10 +1,11 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { product,productSearch } from '../data-types';
-import {faTrash,faEdit} from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute,Router } from '@angular/router';
+import { product, productSearch } from '../data-types';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminHomeComponent } from '../admin-home/admin-home.component';
-
+import { concat, debounceTime, distinctUntilChanged, fromEvent, map, Observable, of, Subject, switchMap } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -12,95 +13,84 @@ import { AdminHomeComponent } from '../admin-home/admin-home.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  popularProducts:undefined | product[];
-  trendyProducts:undefined | product[];
 
-  
-  productMessage:undefined|string;
-  productList:undefined|product[];
-  icon=faTrash;
+  productMessage: undefined | string;
+  productList: undefined | product[];
+  icon = faTrash;
   editIcon = faEdit;
 
-  menuType:String = 'default';
-  AdminName:string='';
-  searchResult:undefined | product[];
-  Result:undefined | productSearch[];
-  userName:string="";
-  searchtext:any;
-  search1:any;
-
-  msg: string = ''; 
-  clss: string = ''; 
-  
-	products: product[] = [];
+  menuType: String = 'default';
+  AdminName: string = '';
+  searchResult: undefined | product[];
+  searchtext: any;
+  query: any;
+  products: product[] = [];
 
 
-  constructor(private productservice:ProductsService, private route:Router, private adminAction:AdminHomeComponent){}
-  
+  constructor(private productservice: ProductsService, private route: Router, private adminAction: AdminHomeComponent, private router: ActivatedRoute, private http: HttpClient) {
+
+  }
   answer = localStorage.getItem('session');
   ans = localStorage.getItem('sessionEdit');
   temp = localStorage.getItem('sessionSearch');
 
-  ngOnInit():void{
-    //this.product.popularProducts().subscribe((data)=>{
-      //this.popularProducts = data;
-   //});
-   //this.product.trendyProducts().subscribe((data)=>{
-     //  this.trendyProducts=data;
-   //})
-
-   this.List( );
+  ngOnInit(): void {
+    this.List();
   }
 
-  deleteProduct(id:number)
-  {
-      if(confirm('Are you sure to delete record'))
-      {
-        console.warn("test is",id)
-        this.productservice.deleteProduct(id).subscribe((result)=>{
-        if(result)
-        {
-          this.productMessage="this product is deleted";
-          this.List();
-        }
+  searchProduct(query: KeyboardEvent) {
+    if (query) {
+      const element = query.target as HTMLInputElement;
+      this.productservice.SearchProducts(element.value).subscribe((result) => {
+        this.searchResult = result;
+        console.log(this.searchResult);
+        return this.searchResult;
       })
-      setTimeout(() => {
-        this.productMessage=undefined
-      }, 3000);
-      }
+    }
   }
 
-  List()
-  {
-    this.productservice.productList().subscribe((result)=>{
+  List() {
+    this.productservice.productList().subscribe((result) => {
       console.warn(result)
-      this.productList=result;
+      this.productList = result;
     })
   }
 
-  searchProduct(query:KeyboardEvent)
-  {
-     if(query)
-     {
-      const element = query.target as HTMLInputElement;
-      this.productservice.SearchProducts(element.value).subscribe((result)=>{
-          this.searchResult=result;
+  redirectToDetails(id: number) {
+    this.route.navigate(['/details/' + id])
+  }
+
+  checkboxselectlist: any[] = [];
+
+  filterResults(obj: any, e: any) {
+    if (e.currentTarget.checked == true) {
+      this.checkboxselectlist.push(obj.id);
+      console.log(this.checkboxselectlist);
+    }
+    if (e.currentTarget.checked == false) {
+      this.checkboxselectlist.forEach((element, index) => {
+        if (element == obj.id) {
+          this.checkboxselectlist.splice(index, 1);
+        }
       })
-     }
+    }
   }
 
-  hideSearch()
-  {
-    this.searchResult=undefined;
+  DeleteAll() {
+    if (confirm('Are you Sure?')) {
+      this.checkboxselectlist.forEach((element, index) => {
+        this.deleteProduct(element);
+      })
+      this.checkboxselectlist.length=0;
+    }
   }
 
-  submitSearch(val:string)
-  {
-     this.route.navigate([`search/${val}`])
+  deleteProduct(id: number) {
+    this.productservice.deleteProduct(id).subscribe((result) => {
+      if (result) {
+        this.List();
+      }
+    })
   }
-  redirectToDetails(id:number){
-    this.route.navigate(['/details/'+id])
-  }
-
 }
-  
+
