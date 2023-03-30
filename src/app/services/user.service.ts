@@ -18,17 +18,11 @@ export class UserService {
       if(result)
       {
         localStorage.setItem('user',JSON.stringify(result.body));
-        this.route.navigate(['/']);
+        this.route.navigate(['Home']);
       }
      })
   }
-  userAuthReload()
-  {
-    if(localStorage.getItem('user'))
-    {
-      this.route.navigate(['/'])
-    }
-  }
+  
   userLogin(data:login)
   {
      this.http.get<SignUp[]>(`http://localhost:3000/users?email=${data.email}&password=${data.password}`,
@@ -37,7 +31,7 @@ export class UserService {
       {
         this.invalidUserAuth.emit(false)
         localStorage.setItem('user',JSON.stringify(result.body[0]));
-        this.route.navigate(['/']);
+        this.route.navigate(['Home']);
       }
       else{
         this.invalidUserAuth.emit(true)
