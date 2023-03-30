@@ -1,50 +1,46 @@
+<div class="cnt">
+    <input type="text" placeholder="Search Product by Name, Heading and subHeading" [(ngModel)]="query" name="query">
+</div>
 <nav class="nav">
     <div class="nav-search" *ngIf="temp==='true'">
-       <input 
-       type="text" 
-       placeholder="Search Product" 
-       [(ngModel)]="searchtext">
+        <input type="text" placeholder="Search Product" [(ngModel)]="searchtext" name="searchtext">
     </div>
 </nav>
 
 <div class="product-list">
     <p id="message-p">{{productMessage}}</p>
     <h1>Products List</h1>
-
+    <button [hidden]="checkboxselectlist.length===0?true:false" (click)="DeleteAll()" class="bt">Delete?</button>
     <table>
         <thead>
             <tr>
-                
+                <th *ngIf="answer==='true'">Delete</th>
                 <th>Name</th>
                 <th>Heading</th>
                 <th>SubHeading</th>
                 <th>Stock</th>
-		<th>Tags</th>
+                <th>Tags</th>
                 <th>Expiry</th>
-		<th>Description</th>
-                <th *ngIf="answer==='true'">Delete</th>
+                <th>Description</th>
+
                 <th *ngIf="ans==='true'">Edit</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of (productList  | searchText: searchtext | sort)">
-		<td><a class="anchor" (click)="redirectToDetails(item.id)">{{item.name}}</a></td>
+            <tr *ngFor="let item of( productList  | orderBy: 'stock' | searchText: searchtext | custom: query);">
+                <td *ngIf="answer==='true'"><input type="checkbox" name="del" (change)="filterResults(item, $event)">
+                </td>
+                <td><a class="anchor" (click)="redirectToDetails(item.id)">{{item.name}}</a></td>
                 <td>{{item.heading}}</td>
                 <td>{{item.subHeading}}</td>
                 <td>{{item.stock}}</td>
                 <td>{{item.tags}}</td>
-				<td>{{item.expiry}}</td>
+                <td>{{item.expiry}}</td>
                 <td>{{item.description}}</td>
-                
-                <td *ngIf="answer==='true'">
-                     <fa-icon [icon]="icon" (click)="deleteProduct(item.id)"></fa-icon> 
-                </td>
-                
                 <td *ngIf="ans==='true'">
-                    <a class="adjust-update-link" routerLink="/Admin-update-product/{{item.id}}"><fa-icon [icon]="editIcon"></fa-icon></a>
+                    <a class="adjust-update-link" routerLink="/Admin-update-product/{{item.id}}"><fa-icon
+                            [icon]="editIcon"></fa-icon></a>
                 </td>
             </tr>
         </tbody>
     </table>
-
-
