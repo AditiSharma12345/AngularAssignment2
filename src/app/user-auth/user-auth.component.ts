@@ -50,28 +50,5 @@ export class UserAuthComponent {
    {
        this.showLogin=true;
    }
-
-   deleteProduct(id:number)
-   {
-       console.warn("test is",id)
-       this.product.deleteProduct(id).subscribe((result)=>{
-         if(result)
-         {
-           this.productMessage="this product is deleted";
-           this.List();
-         }
-       })
-       setTimeout(() => {
-         this.productMessage=undefined
-       }, 3000);
-   }
-
-   List()
-  {
-    this.product.productList().subscribe((result)=>{
-      console.warn(result)
-      this.productList=result;
-    })
-  }
 }
  
