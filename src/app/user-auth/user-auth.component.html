@@ -1,37 +1,3 @@
-<!--<div class="product-list">
-    <h1>All product List</h1>
-    <p id="message-p">{{productMessage}}</p>
-    <table>
-        <thead>
-            <tr>
-                <th>image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>color</th>
-                <th>category</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of productList">
-                <td><img src="{{item.image}}"></td>
-                <td>{{item.name}}</td>
-                <td>{{item.price}}</td> 
-                <td>{{item.color}}</td>
-                <td>{{item.category}}</td>
-                <td>{{item.description}}</td>
-                <td>
-                    <fa-icon [icon]="icon" (click)="deleteProduct(item.id)"></fa-icon>
-                    <a class="adjust-update-link" routerLink="/Admin-update-product/{{item.id}}"><fa-icon [icon]="editIcon"></fa-icon>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-
 <div class="user-auth">
     <div class="user-signUp" *ngIf="!showLogin">
     <h1>user sign-up</h1>
