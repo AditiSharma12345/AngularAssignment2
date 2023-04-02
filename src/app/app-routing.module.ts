@@ -13,15 +13,19 @@ import { QuickAddComponent } from '.angular/quick-add/quick-add.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+ {path:'',component:StateComponent},
+  {path: 'Home', component: HomeComponent,
+  resolve:{
+    data:ResolveGuard
+  },canActivate:[AuthGuard]},
   {path: 'Admin', component: AdminComponent},
-  {path: 'Admin-home', component: AdminHomeComponent, canActivate:[AuthGuard]},
-  {path: 'Admin-add-product', component: AdminAddProductComponent},
-  {path: 'Admin-update-product/:id', component: AdminUpdateProductComponent},
-  {path: 'search/:query', component: SearchComponent},
-  {path: 'details/:productId', component: ProductDetailsComponent},
+  {path: 'Admin-home', component: AdminHomeComponent,canActivate:[AuthGuard]},
+  {path:'quick-add',component:QuickAddProductComponent,canActivate:[AuthGuard]},
+  {path: 'Admin-add-product', component: AdminAddProductComponent,canActivate:[AuthGuard]},
+  {path: 'Admin-update-product/:id', component: AdminUpdateProductComponent,canActivate:[AuthGuard]},
+  {path: 'details/:productId', component: ProductDetailsComponent,canActivate:[AuthGuard]},
   {path:'user-auth',component: UserAuthComponent},
-  {path:'quick-add',component:QuickAddComponent}
+  {path:'**',component:PageNotFoundComponent}
 ];
 
 @NgModule({
