@@ -35,7 +35,7 @@ export class HomeComponent {
   temp = localStorage.getItem('sessionSearch');
 
   ngOnInit(): void {
-    this.List();
+    this.productList = this.router.snapshot.data['data'];
   }
 
   searchProduct(query: KeyboardEvent) {
